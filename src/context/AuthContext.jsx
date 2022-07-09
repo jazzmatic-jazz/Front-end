@@ -44,6 +44,37 @@ export const AuthProvider = ({children})=>{
        
     }
 
+
+    let registerUser = async (e) => {
+        e.preventDefault()
+        console.log('RegisterUser')
+        let response =  await fetch('/api/register/',{
+            method : 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({'email':e.target.email.value, "name":e.target.name.value, 'password': e.target.password.value,
+            'password2': e.target.password2.value, "tc": true})
+        })
+//user12345678
+        let data = await response.json()
+
+        if (response.status === 201){
+            setAuthTokens(data)
+            setUser(jwt_decode(data.token.access))
+            localStorage.setItem('authTokens',JSON.stringify(data))
+            history('/login')
+        }
+        else{
+            alert('Email or Password not correct!!')
+        }
+
+        console.log('data:', data)
+        console.log('response:', response)
+
+       
+    }
+
     let logOutUser = () =>{
         setAuthTokens(null)
         setUser(null)
@@ -56,6 +87,7 @@ export const AuthProvider = ({children})=>{
         user: user,
         loginUser: loginUser,
         logOutUser: logOutUser,
+        registerUser: registerUser,
     }
     
     return(

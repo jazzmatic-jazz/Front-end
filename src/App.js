@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import PrivateRoute from "./utils/PrivateRoute";
 import { AuthProvider } from "./context/AuthContext";
+import RegisterUser from "./pages/RegisterUser";
 
 function App() {
   return (
@@ -20,7 +21,9 @@ function App() {
           
           <Routes >
 
+            
             <Route path="/login" element={<LoginPage />}/>
+            <Route path="/register" element={<RegisterUser />}/>
             <Route path="/" element={<NoteListPage />}/>
             <Route path="/note/:id" element={<NotePage/>}/>
             
