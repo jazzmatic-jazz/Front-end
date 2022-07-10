@@ -8,9 +8,12 @@ const Header = () => {
     <div className='app-header'>
        
         
-        <Link to="/"> <h1>Note List</h1></Link>
+        <Link to="/note"> <h1>Note List</h1></Link>
         {user ? (<p onClick={logOutUser}> Logout</p>):(
-          <Link to="/login">Login</Link>
+          <>
+            <Link to="/login">Login</Link>
+            <Link to="/register">Register</Link> 
+          </>
         )}
         
         

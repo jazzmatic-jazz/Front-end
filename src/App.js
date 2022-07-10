@@ -21,12 +21,14 @@ function App() {
           
           <Routes >
 
-            
             <Route path="/login" element={<LoginPage />}/>
             <Route path="/register" element={<RegisterUser />}/>
-            <Route path="/" element={<NoteListPage />}/>
-            <Route path="/note/:id" element={<NotePage/>}/>
-            
+            <Route path="*" element={<p>There's nothing here: 404!</p>} />
+              <Route element={<PrivateRoute/>}>
+                <Route path="/" element={<HomePage />} exact/>
+                <Route path="/note" element={<NoteListPage />} exact/>
+                <Route path="/note/:id" element={<NotePage/>} exact/>
+              </Route>
           </Routes>
           </AuthProvider>
         </div>

@@ -63,7 +63,7 @@ function NotePage () {
     else if(id =='new' && note !== null){
       createNote()
     }
-    history('/')
+    history('/note')
   }
 
   return (

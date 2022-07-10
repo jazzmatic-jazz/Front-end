@@ -32,7 +32,7 @@ export const AuthProvider = ({children})=>{
             setAuthTokens(data)
             setUser(jwt_decode(data.token.access))
             localStorage.setItem('authTokens',JSON.stringify(data))
-            history('/')
+            history('/note')
         }
         else{
             alert('Email or Password not correct!!')
